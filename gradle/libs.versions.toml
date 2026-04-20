@@ -1,0 +1,13 @@
+[versions]
+commons = "0.1.0"
+dotenv = "4.0.0"
+
+berry-parser = "0.1.0"
+
+[plugins]
+commons = { version.ref = "commons", id = "dev.lyranie.commons-gradle" }
+dotenv = { version.ref = "dotenv", id = "co.uzzu.dotenv.gradle" }
+publish = { id = "maven-publish" }
+
+[libraries]
+berry-parser = { group = "dev.lyranie", name = "berry-parser", version.ref = "berry-parser" }
