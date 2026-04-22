@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
     implementation(libs.berry.parser)
+    implementation(libs.ksp)
 }
 
 gradlePlugin {
