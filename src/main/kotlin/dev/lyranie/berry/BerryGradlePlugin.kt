@@ -27,9 +27,16 @@ import org.gradle.api.plugins.JavaPluginExtension
 class BerryGradlePlugin : Plugin<Project> {
     companion object {
         val LOGGER: Logger = LogManager.getLogger("berry-db")
+        const val BERRY_KSP_VERSION = "0.1.0"
     }
 
     override fun apply(target: Project) {
+        target.plugins.apply("com.google.devtools.ksp")
+        target.dependencies.add(
+            "ksp",
+            "dev.lyranie:berry-ksp:$BERRY_KSP_VERSION"
+        )
+
         val extension = target.extensions.create("Berry", BerryGradlePluginExtension::class.java)
         val outDir = target.layout.buildDirectory.dir("generated/berry").get()
         val generateTask = target.tasks.register("generate") {

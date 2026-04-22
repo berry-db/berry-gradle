@@ -67,6 +67,7 @@ object CodeGen {
                 appendLine()
                 appendLine("package dev.lyranie.berry.table")
                 appendLine()
+                appendLine("import dev.lyranie.berry.parser.annotation.Entity")
                 appendLine("import dev.lyranie.berry.parser.annotation.Primary")
                 appendLine()
                 schema.tables.forEach { table ->
@@ -77,6 +78,7 @@ object CodeGen {
     }
 
     private fun generateTable(table: Table, builder: StringBuilder) {
+        builder.appendLine("@Entity")
         builder.appendLine("data class ${table.name}(")
 
         table.fields.forEach { field ->
