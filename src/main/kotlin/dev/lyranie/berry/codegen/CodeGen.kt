@@ -98,8 +98,8 @@ object CodeGen {
         Type.STRING -> "String"
         Type.NUMBER -> "Int"
         Type.BOOLEAN -> "Boolean"
-        is Type.Reference -> type.name
-        is Type.List -> "List<${type.name}>"
+        is Type.Reference -> "${type.name}?"
+        is Type.List -> "List<${type.name}?>"
         else -> throw UnsupportedTypeException(type::class)
     }
 }
