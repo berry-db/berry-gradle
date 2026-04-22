@@ -21,6 +21,7 @@ import dev.lyranie.berry.BerryGradlePlugin
 import dev.lyranie.berry.parser.SchemaParser
 import dev.lyranie.berry.parser.exception.UnsupportedTypeException
 import dev.lyranie.berry.parser.schema.Field
+import dev.lyranie.berry.parser.schema.Parameter
 import dev.lyranie.berry.parser.schema.Table
 import dev.lyranie.berry.parser.schema.Type
 import org.gradle.api.GradleException
@@ -66,6 +67,8 @@ object CodeGen {
                 appendLine()
                 appendLine("package dev.lyranie.berry.table")
                 appendLine()
+                appendLine("import dev.lyranie.berry.parser.annotation.Primary")
+                appendLine()
                 schema.tables.forEach { table ->
                     generateTable(table, this)
                 }
@@ -85,6 +88,9 @@ object CodeGen {
     }
 
     private fun generateField(field: Field, builder: StringBuilder) {
+        if (field.parameters.contains(Parameter.Primary)) {
+            builder.appendLine("    @Primary")
+        }
         builder.appendLine("    val ${field.name}: ${generateType(field.type)},")
     }
 

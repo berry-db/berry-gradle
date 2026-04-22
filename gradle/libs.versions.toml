@@ -2,7 +2,7 @@
 commons = "0.1.0"
 dotenv = "4.0.0"
 
-berry-parser = "0.1.0"
+berry-parser = "0.1.1"
 
 [plugins]
 commons = { version.ref = "commons", id = "dev.lyranie.commons-gradle" }
